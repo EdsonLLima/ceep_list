@@ -11,16 +11,17 @@ const handleNewItem = (event) => {
 
   const calendar = document.querySelector("[data-form-date]");
   const date = moment(calendar.value); //get value calendar
+
   const dateFormat = date.format("DD/MM/YYYY");
 
   //criar um objeto data(dados) para guarda os objetos que vão ser
   //renderizado em tela
-  const data = {
+  const dataStorage = {
     getValue,
     dateFormat,
   };
 
-  list.appendChild(liTask);
+  list.appendChild(createTask(dataStorage));
   input.value = "";
 };
 
