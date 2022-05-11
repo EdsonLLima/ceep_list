@@ -3,7 +3,7 @@ import DeleteButton from "./components/deleteTasks.js";
 
 const newToDo = document.querySelector("[data-form-button]");
 const createTask = (event) => {
-  //imprende o refresh do formulário.
+  //impende o parão de funcionamento e erefresh do formulário.
   event.preventDefault();
   const list = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
