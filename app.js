@@ -1,18 +1,30 @@
 import FinishButton from "./components/finishTasks.js";
 import DeleteButton from "./components/deleteTasks.js";
 
-const newToDo = document.querySelector("[data-form-button]");
-const createTask = (event) => {
+const handleNewItem = (event) => {
   //impende o parão de funcionamento e erefresh do formulário.
   event.preventDefault();
+
   const list = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
   const getValue = input.value;
 
   const calendar = document.querySelector("[data-form-date]");
-  const data = moment(calendar.value); //get value calendar
-  const dateFormat = data.format("DD/MM/YYYY");
+  const date = moment(calendar.value); //get value calendar
+  const dateFormat = date.format("DD/MM/YYYY");
 
+  //criar um objeto data(dados) para guarda os objetos que vão ser
+  //renderizado em tela
+  const data = {
+    getValue,
+    dateFormat,
+  };
+
+  list.appendChild(liTask);
+  input.value = "";
+};
+
+const createTask = ({ getValue, dateFormat }) => {
   //cria um elemento
   const liTask = document.createElement("li");
   //add classe ao elento criado
@@ -25,8 +37,8 @@ const createTask = (event) => {
 
   liTask.appendChild(FinishButton());
   liTask.appendChild(DeleteButton());
-  list.appendChild(liTask);
-  input.value = "";
-};
 
-newToDo.addEventListener("click", createTask);
+  return liTask;
+};
+const newToDo = document.querySelector("[data-form-button]");
+newToDo.addEventListener("click", handleNewItem);
