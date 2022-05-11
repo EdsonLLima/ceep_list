@@ -11,7 +11,7 @@ const createTask = (event) => {
 
   const calendar = document.querySelector("[data-form-date]");
   const data = moment(calendar.value); //get value calendar
-  console.log(data.format("DD/MM/YYYY"));
+  const dateFormat = data.format("DD/MM/YYYY");
 
   //cria um elemento
   const liTask = document.createElement("li");
@@ -19,7 +19,7 @@ const createTask = (event) => {
   liTask.classList.add("task");
 
   //Usando template strig para trabalhar html e js juntos
-  const content = `<p class="content">${getValue}</p>`;
+  const content = `<p class="content">${dateFormat} * ${getValue}</p>`;
 
   liTask.innerHTML = content;
 
