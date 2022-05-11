@@ -9,6 +9,10 @@ const createTask = (event) => {
   const input = document.querySelector("[data-form-input]");
   const getValue = input.value;
 
+  const calendar = document.querySelector("[data-form-date]");
+  const data = moment(calendar.value); //get value calendar
+  console.log(data.format("DD/MM/YYYY"));
+
   //cria um elemento
   const liTask = document.createElement("li");
   //add classe ao elento criado
