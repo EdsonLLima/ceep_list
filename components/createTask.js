@@ -1,6 +1,8 @@
 import FinishButton from "./finishTasks.js";
 import DeleteButton from "./deleteTasks.js";
 
+let tarefas = [];
+
 export const handleNewItem = (event) => {
   //impende o parão de funcionamento e erefresh do formulário.
   event.preventDefault();
@@ -21,8 +23,10 @@ export const handleNewItem = (event) => {
     dateFormat,
   };
 
+  tarefas.push(dataStorage);
+
   list.appendChild(Task(dataStorage));
-  localStorage.setItem("tasks", JSON.stringify(dataStorage));
+  localStorage.setItem("tasks", JSON.stringify(tarefas));
   input.value = "";
 };
 
