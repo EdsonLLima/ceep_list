@@ -6,7 +6,7 @@ export const handleNewItem = (event) => {
   event.preventDefault();
 
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  //Pega os dados do localStorage usando a chave "task"
+  //Pega os dados do localStorage usando a chave "task" ou inicializa um array vazio
 
   const list = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
@@ -25,6 +25,7 @@ export const handleNewItem = (event) => {
   };
 
   const updateTasks = [...tasks, dataStorage];
+  //spread operation para capturar os dados da tasks e dataStorage
 
   list.appendChild(Task(dataStorage));
 
