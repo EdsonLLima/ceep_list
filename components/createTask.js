@@ -1,11 +1,12 @@
 import FinishButton from "./finishTasks.js";
 import DeleteButton from "./deleteTasks.js";
 
-let tarefas = [];
-
 export const handleNewItem = (event) => {
   //impende o parão de funcionamento e erefresh do formulário.
   event.preventDefault();
+
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  //Pega os dados do localStorage usando a chave "task"
 
   const list = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
@@ -23,10 +24,12 @@ export const handleNewItem = (event) => {
     dateFormat,
   };
 
-  tarefas.push(dataStorage);
+  const updateTasks = [...tasks, dataStorage];
 
   list.appendChild(Task(dataStorage));
-  localStorage.setItem("tasks", JSON.stringify(tarefas));
+
+  localStorage.setItem("tasks", JSON.stringify(updateTasks));
+
   input.value = "";
 };
 
