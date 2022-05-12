@@ -32,7 +32,7 @@ const createTask = ({ getValue, dateFormat }) => {
   liTask.classList.add("task");
 
   //Usando template strig para trabalhar html e js juntos
-  const content = `<p class="content">${dateFormat} * ${getValue}</p>`;
+  const content = `<p class="content">${dateFormat} <br/> ${getValue} </p>`;
 
   liTask.innerHTML = content;
 
