@@ -22,7 +22,7 @@ export const handleNewItem = (event) => {
   };
 
   list.appendChild(Task(dataStorage));
-  sessionStorage.setItem("tasks", JSON.stringify(dataStorage));
+  localStorage.setItem("tasks", JSON.stringify(dataStorage));
   input.value = "";
 };
 
