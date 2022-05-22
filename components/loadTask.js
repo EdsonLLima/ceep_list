@@ -1,3 +1,4 @@
+import { removeDatesRepeat, sortDates } from "../service/date.js";
 import { createDate } from "./createDate.js";
 // import { Task } from "./createTask.js";
 
@@ -7,9 +8,10 @@ export const loadTask = () => {
   const registeredTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
   list.innerHTML = " ";
+  const uniqueDates = removeDatesRepeat(registeredTasks);
 
-  registeredTasks.forEach((task) => {
-    const day = moment(task.dateFormat, "DD/MM/YYYY");
+  sortDates(uniqueDates);
+  uniqueDates.forEach((day) => {
     list.appendChild(createDate(day));
   });
 };
