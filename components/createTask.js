@@ -15,6 +15,7 @@ export const handleNewItem = (event) => {
 
   const calendar = document.querySelector("[data-form-date]");
   const date = moment(calendar.value); //get value calendar
+  const dateTime = date.format("HH:mm");
 
   const dateFormat = date.format("DD/MM/YYYY");
   const completed = false;
@@ -24,6 +25,7 @@ export const handleNewItem = (event) => {
   const dataStorage = {
     getValue,
     dateFormat,
+    dateTime,
     completed,
   };
 
@@ -38,12 +40,12 @@ export const handleNewItem = (event) => {
   loadTask();
 };
 
-export const Task = ({ getValue, dateFormat, completed }, id) => {
+export const Task = ({ getValue, dateTime, completed }, id) => {
   //cria um elemento
   const liTask = document.createElement("li");
 
   //Usando template strig para trabalhar html e js juntos
-  const content = `<p class="content">${dateFormat}  ${getValue} </p>`;
+  const content = `<p class="content">${dateTime}  ${getValue} </p>`;
   if (completed) {
     //add classe ao elento criado
     liTask.classList.add("done");
@@ -54,7 +56,7 @@ export const Task = ({ getValue, dateFormat, completed }, id) => {
   liTask.innerHTML = content;
 
   liTask.appendChild(FinishButton(loadTask, id));
-  liTask.appendChild(DeleteButton());
+  liTask.appendChild(DeleteButton(loadTask, id));
 
   return liTask;
 };
